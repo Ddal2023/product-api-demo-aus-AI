@@ -48,7 +48,7 @@
 
 | GET | `/api/properties/?all=1` | Получить все объявления (для staff) | ✅ |
 
-| POST | `/api/products/` | Создать obj-Product (only staff & superuser)| ✅ |
+| POST | `/api/products/` | Создать obj-Product (JWT, only staff & superuser)| ✅ |
 
 | GET | `/api/products/{id}/` | Получить детально | ❌ |
 
@@ -115,3 +115,15 @@
 
 curl -H "Authorization: Bearer <access\_token>" http://127.0.0.1:8000/api/properties/
 
+---
+
+## ⚙️ Custom Actions
+
+В API реализованы дополнительные методы (actions), доступные из ViewSet:
+
+| Метод | URL | Описание | Права |
+|-------|-----|-----------|-------|
+| POST | `/api/products/{id}/markalsdoppelt/` | Помечает товар как дубль (добавляет “take two” в название) | Только superuser |
+| DELETE | `/api/products/doublesdelete/` | Удаляет все помеченные как дубль объекты | Staff или superuser |
+
+> Эти методы можно вызывать из Swagger UI, раздел **“products” → Actions**.

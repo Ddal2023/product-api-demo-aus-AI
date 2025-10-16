@@ -52,3 +52,4 @@ POST /api/token/
 Authorization: Bearer <your_access_token>
 
 Токен живёт 60 минут.
+
