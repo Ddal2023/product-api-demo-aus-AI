@@ -1,6 +1,6 @@
 # 🏠 Property API
 
-Django REST API для управления каталогом Product.
+Django REST API to manage the Product catalog.
 
 ---
 
