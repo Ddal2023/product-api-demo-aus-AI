@@ -3,8 +3,8 @@ from .models import Product
 
 class ProductFilter(django_filters.FilterSet):
 
-    name = django_filters.CharFilter(lookup_expr='icontains')
-    price = django_filters.RangeFilter()
+    # name = django_filters.CharFilter(lookup_expr='icontains')
+    # price = django_filters.RangeFilter()
 
     # диапазон для цены
     price_min = django_filters.NumberFilter(field_name="price", lookup_expr="gte")
