@@ -4,42 +4,41 @@ Django REST API для управления каталогом Product.
 
 ---
 
-## 🚀 Запуск проекта
+## 🚀 Project launch
 
 ```bash
-# Клонировать репозиторий (если из архива — просто распаковать)
+# Clone the repository (if from an archive, just unzip it)
 git clone <repo> product_api
 cd product_api
 
-# Создать и активировать виртуальное окружение
+# Create and activate a virtual environment
 python -m venv venv
 venv\Scripts\activate  # Windows
 # или
 source venv/bin/activate  # macOS / Linux
 
-# Установить зависимости
+# Install dependencies
 pip install -r requirements.txt
 
-# Применить миграции
-python manage.py migrate (если есть файл БД "db.sqlite3" - пропустить пункт)
+# Apply migrations
+python manage.py migrate (If there is a database file "db.sqlite3" - skip this step)
 
-# Создать суперпользователя (опционально), текущий: {"login": "admin" / "psw"^"admin"}
-python manage.py createsuperuser (если есть файл БД "db.sqlite3" И 
-	логин/пароль суперюзера - пропустить пункт)
+# Create a superuser (optional), current: {"login": "admin" / "psw": "admin"}
+python manage.py createsuperuser (If there is a database file "db.sqlite3" - skip this step)
 
-# Запустить сервер
+# run Server
 python manage.py runserver
 
 
-📚 Документация
+📚 Documentation
 
 Swagger UI: http://127.0.0.1:8000/api/schema/swagger-ui/
 OpenAPI JSON: http://127.0.0.1:8000/api/schema/
 Redoc: http://127.0.0.1:8000/api/schema/redoc/
 
-🔑 Авторизация
-JWT-аутентификация через SimpleJWT
-. Получение токена:
+🔑 Authorization
+JWT-authentication via SimpleJWT
+. Obtaining a token:
 
 POST /api/token/
 {
@@ -48,8 +47,8 @@ POST /api/token/
 }
 
 
-Использование:
+Usage:
 Authorization: Bearer <your_access_token>
 
-Токен живёт 60 минут.
+The token lives for 60 minutes.
 

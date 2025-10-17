@@ -2,11 +2,11 @@
 
 
 
-Документация API для управления catalog of Products.  
+API documentation for managing Product catalogs.  
 
-Авторизация — через \*\*JWT (SimpleJWT)\*\*.  
+Authorization - via \*\*JWT (SimpleJWT)\*\*.  
 
-Полный интерактивный Swagger доступен по адресу:  
+The full interactive Swagger is available at:  
 
 \[http://127.0.0.1:8000/api/schema/swagger-ui/](http://127.0.0.1:8000/api/schema/swagger-ui/)
 
@@ -16,19 +16,19 @@
 
 
 
-\## 🔐 Аутентификация
+\## 🔐 Authentication
 
 
 
-| Метод | URL | Описание |
+| Method | URL | Description |
 
 |-------|-----|-----------|
 
-| POST | `/api/token/` | Получить токен доступа (`access` и `refresh`) |
+| POST | `/api/token/` | Get an access token (`access` и `refresh`) |
 
-| POST | `/api/token/refresh/` | Обновить токен доступа |
+| POST | `/api/token/refresh/` | Refresh access token |
 
-| POST | `/api/token/verify/` | Проверить валидность токена |
+| POST | `/api/token/verify/` | Check the validity of the token |
 
 
 
@@ -40,21 +40,19 @@
 
 
 
-| Метод | URL | Описание | Авторизация |
+| Method | URL | Description | Authorization |
 
 |-------|-----|-----------|-------------|
 
-| GET | `/api/products/` | Получить список Products | ❌ |
-
-| GET | `/api/properties/?all=1` | Получить все объявления (для staff) | ✅ |
+| GET | `/api/products/` | Recieve list of Products | ❌ |
 
 | POST | `/api/products/` | Создать obj-Product (JWT, only staff & superuser)| ✅ |
 
-| GET | `/api/products/{id}/` | Получить детально | ❌ |
+| GET | `/api/products/{id}/` | Recieve by detail | ❌ |
 
-| PATCH | `/api/products/{id}/` | Обновить (только superuser) | ✅ |
+| PATCH | `/api/products/{id}/` | Correct (only superuser) | ✅ |
 
-| DELETE | `/api/products/{id}/` | Удалить (only superuser) | ✅ |
+| DELETE | `/api/products/{id}/` | Delete (only superuser) | ✅ |
 
 
 
@@ -62,11 +60,11 @@
 
 
 
-\## ⚙️ Кастомные действия
+\## ⚙️ Custom actions
 
 
 
-| Метод | URL | Описание | Авторизация |
+| Method | URL | Description | Authorization |
 
 |-------|-----|-----------|-------------|
 
@@ -80,25 +78,25 @@
 
 
 
-\## 🔎 Фильтрация
+\## 🔎 Filtration
 
 
 
-Можно фильтровать через query-параметры:
+You can filter through query-parameters:
 
 
 
-| Параметр | Пример | Описание |
+| Patametrs | Example | Description |
 
 |-----------|---------|----------|
 
-| `name` | `/api/products/?name=bear` | Поиск по названию |
+| `name` | `/api/products/?name=bear` | Find by name |
 
-| `search` | `/api/products/?search=bear` | Фильтр по описанию И названию (in name & description)|
+| `search` | `/api/products/?search=bear` | Filter by description and name  (in name & description)|
 
-| `price\_min` | `/api/productss/?price\_min=100000` | Минимальная цена |
+| `price\_min` | `/api/productss/?price\_min=100000` | Min price |
 
-| `price\_max` | `/api/productss/?price\_max=500000` | Максимальная цена |
+| `price\_max` | `/api/productss/?price\_max=500000` | Max price |
 
 
 
@@ -107,7 +105,7 @@
 
 
 
-\## 🧑‍💻 Пример авторизации в запросах
+\## 🧑‍💻 Example of authorization in requests
 
 
 
@@ -119,11 +117,12 @@ curl -H "Authorization: Bearer <access\_token>" http://127.0.0.1:8000/api/proper
 
 ## ⚙️ Custom Actions
 
-В API реализованы дополнительные методы (actions), доступные из ViewSet:
+In API additional methods (actions) are implemented, accessible from ViewSet:
 
-| Метод | URL | Описание | Права |
+| Method | URL | Descriptions | Permissions |
 |-------|-----|-----------|-------|
-| POST | `/api/products/{id}/markalsdoppelt/` | Помечает товар как дубль (добавляет “take two” в название) | Только superuser |
-| DELETE | `/api/products/doublesdelete/` | Удаляет все помеченные как дубль объекты | Staff или superuser |
+| POST | `/api/products/{id}/markalsdoppelt/` | Marks the product as a duplicate (adds “take two” in name) | Only superuser |
+| DELETE | `/api/products/doublesdelete/` | Removes all objects marked as duplicates. | Staff or superuser |
 
-> Эти методы можно вызывать из Swagger UI, раздел **“products” → Actions**.
+> These methods can be called from Swagger UI, part **“products” → Actions**.
+
